@@ -1,6 +1,7 @@
 package com.saucedemo.pom.tests;
 
 import com.saucedemo.pom.base.BaseTest;
+import com.saucedemo.pom.objects.User;
 import com.saucedemo.pom.pages.LoginPage;
 import com.saucedemo.pom.pages.ProductsPage;
 import org.junit.jupiter.api.Test;
@@ -8,11 +9,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CartTests extends BaseTest {
+    User user = new User("standard_user", "secret_sauce");
 
     @Test
     public void addToCart() {
         ProductsPage productsPage = new LoginPage(driver)
-                .login()
+                .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
                 .addToCart();
         String removeText = productsPage.getRemoveText();
@@ -25,7 +27,7 @@ public class CartTests extends BaseTest {
     @Test
     public void removeFromCart() {
         ProductsPage productsPage = new LoginPage(driver)
-                .login()
+                .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
                 .addToCart()
                 .removeFromCart();
@@ -39,7 +41,7 @@ public class CartTests extends BaseTest {
     @Test
     public void getItemName() {
         String itemName = new LoginPage(driver)
-                .login()
+                .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
                 .addToCart()
                 .navigateToCartPage()
@@ -51,7 +53,7 @@ public class CartTests extends BaseTest {
     @Test
     public void getItemQty() {
         String itemQty = new LoginPage(driver)
-                .login()
+                .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
                 .addToCart()
                 .navigateToCartPage()

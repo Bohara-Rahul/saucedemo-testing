@@ -1,17 +1,19 @@
 package com.saucedemo.pom.tests;
 
 import com.saucedemo.pom.base.BaseTest;
+import com.saucedemo.pom.objects.User;
 import com.saucedemo.pom.pages.LoginPage;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CheckoutTests extends BaseTest {
+    User user = new User("standard_user", "secret_sauce");
 
     @Test
     public void verifyPageTitle() {
         String pageTitle = new LoginPage(driver)
-                .login()
+                .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
                 .addToCart()
                 .navigateToCartPage()
@@ -23,7 +25,7 @@ public class CheckoutTests extends BaseTest {
     @Test
     public void verifyCheckoutInformationRequired() {
         String errorMessage = new LoginPage(driver)
-                .login()
+                .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
                 .addToCart()
                 .navigateToCartPage()
@@ -36,7 +38,7 @@ public class CheckoutTests extends BaseTest {
     @Test
     public void verifyPaymentInformation() {
         String paymentInformation = new LoginPage(driver)
-                .login()
+                .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
                 .addToCart()
                 .navigateToCartPage()
@@ -52,7 +54,7 @@ public class CheckoutTests extends BaseTest {
     @Test
     public void verifyShippingInformation() {
         String shippingInformation = new LoginPage(driver)
-                .login()
+                .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
                 .addToCart()
                 .navigateToCartPage()
@@ -68,7 +70,7 @@ public class CheckoutTests extends BaseTest {
     @Test
     public void verifyTotalPrice() {
         String totalPrice = new LoginPage(driver)
-                .login()
+                .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
                 .addToCart()
                 .navigateToCartPage()

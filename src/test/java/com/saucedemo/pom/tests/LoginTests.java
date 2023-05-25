@@ -2,26 +2,19 @@ package com.saucedemo.pom.tests;
 
 import com.saucedemo.pom.base.BaseTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.saucedemo.pom.objects.User;
 import com.saucedemo.pom.pages.LoginPage;
-import com.saucedemo.pom.pages.ProductsPage;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.List;
-import java.util.function.BooleanSupplier;
 
 public class LoginTests extends BaseTest {
+    User validUser = new User("standard_user", "secret_sauce");
+    User lockedOutUser = new User("locked_out_user", "secret_sauce");
 
     @Test
-    public void login() {
+    public void verifyCanLogin() {
         String pageTitle = new LoginPage(driver)
-                .login()
+                .login(validUser.getUsername(), validUser.getPassword())
                 .navigateToProductsPage()
                 .getPageTitle();
 
@@ -32,5 +25,13 @@ public class LoginTests extends BaseTest {
     public void verifyLoginError() {
         String errorMessage = new LoginPage(driver).clickLoginButton().getErrorMessage();
         assertEquals("Epic sadface: Username is required", errorMessage);
+    }
+
+    @Test
+    public void verifyLockedOutUser() {
+        String errorMessage = new LoginPage(driver)
+                .login(lockedOutUser.getUsername(), lockedOutUser.getPassword())
+                .getErrorMessage();
+        assertEquals("Epic sadface: Sorry, this user has been locked out.", errorMessage);
     }
 }

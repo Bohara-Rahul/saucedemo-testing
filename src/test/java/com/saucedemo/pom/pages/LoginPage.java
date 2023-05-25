@@ -1,6 +1,7 @@
 package com.saucedemo.pom.pages;
 
 import com.saucedemo.pom.base.BasePage;
+import com.saucedemo.pom.objects.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,9 +21,9 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public LoginPage login() {
-        driver.findElement(username).sendKeys("standard_user");
-        driver.findElement(password).sendKeys("secret_sauce");
+    public LoginPage login(String username, String password) {
+        driver.findElement(this.username).sendKeys(username);
+        driver.findElement(this.password).sendKeys(password);
         clickLoginButton();
         return this;
     }
