@@ -1,6 +1,8 @@
 package com.saucedemo.pom.tests;
 
 import com.saucedemo.pom.base.BaseTest;
+import com.saucedemo.pom.objects.CheckoutInfo;
+import com.saucedemo.pom.objects.Product;
 import com.saucedemo.pom.objects.User;
 import com.saucedemo.pom.pages.LoginPage;
 import org.junit.jupiter.api.Test;
@@ -9,13 +11,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CheckoutTests extends BaseTest {
     User user = new User("standard_user", "secret_sauce");
+    Product product = new Product("Sauce Labs Backpack");
+    CheckoutInfo checkoutInfo = new CheckoutInfo("John", "Smith", "124567");
 
     @Test
     public void verifyPageTitle() {
         String pageTitle = new LoginPage(driver)
                 .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
-                .addToCart()
+                .addToCart(product.getProductName())
                 .navigateToCartPage()
                 .checkout()
                 .getPageTitle();
@@ -27,7 +31,7 @@ public class CheckoutTests extends BaseTest {
         String errorMessage = new LoginPage(driver)
                 .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
-                .addToCart()
+                .addToCart(product.getProductName())
                 .navigateToCartPage()
                 .checkout()
                 .clickContinueBtn()
@@ -40,12 +44,10 @@ public class CheckoutTests extends BaseTest {
         String paymentInformation = new LoginPage(driver)
                 .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
-                .addToCart()
+                .addToCart(product.getProductName())
                 .navigateToCartPage()
                 .checkout()
-                .enterFirstName()
-                .enterLastName()
-                .enterPostalCode()
+                .enterCheckoutInfo(checkoutInfo)
                 .clickContinueBtn()
                 .getPaymentInformation();
         assertEquals("SauceCard #31337", paymentInformation);
@@ -56,12 +58,10 @@ public class CheckoutTests extends BaseTest {
         String shippingInformation = new LoginPage(driver)
                 .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
-                .addToCart()
+                .addToCart(product.getProductName())
                 .navigateToCartPage()
                 .checkout()
-                .enterFirstName()
-                .enterLastName()
-                .enterPostalCode()
+                .enterCheckoutInfo(checkoutInfo)
                 .clickContinueBtn()
                 .getShippingInformation();
         assertEquals("Free Pony Express Delivery!", shippingInformation);
@@ -72,12 +72,10 @@ public class CheckoutTests extends BaseTest {
         String totalPrice = new LoginPage(driver)
                 .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
-                .addToCart()
+                .addToCart(product.getProductName())
                 .navigateToCartPage()
                 .checkout()
-                .enterFirstName()
-                .enterLastName()
-                .enterPostalCode()
+                .enterCheckoutInfo(checkoutInfo)
                 .clickContinueBtn()
                 .getTotalPrice();
         assertEquals("32.39", totalPrice);

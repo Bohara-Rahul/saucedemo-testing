@@ -1,6 +1,7 @@
 package com.saucedemo.pom.tests;
 
 import com.saucedemo.pom.base.BaseTest;
+import com.saucedemo.pom.objects.Product;
 import com.saucedemo.pom.objects.User;
 import com.saucedemo.pom.pages.LoginPage;
 import com.saucedemo.pom.pages.ProductsPage;
@@ -10,14 +11,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CartTests extends BaseTest {
     User user = new User("standard_user", "secret_sauce");
+    Product product = new Product("Sauce Labs Bike Light");
 
     @Test
     public void addToCart() {
         ProductsPage productsPage = new LoginPage(driver)
                 .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
-                .addToCart();
-        String removeText = productsPage.getRemoveText();
+                .addToCart(product.getProductName());
+        String removeText = productsPage.getRemoveText(product.getProductName());
         String cartAmount = productsPage.getCartAmount();
 
         assertEquals("Remove", removeText);
@@ -29,9 +31,9 @@ public class CartTests extends BaseTest {
         ProductsPage productsPage = new LoginPage(driver)
                 .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
-                .addToCart()
-                .removeFromCart();
-        String addToCartText = productsPage.getAddToCartText();
+                .addToCart(product.getProductName())
+                .removeFromCart(product.getProductName());
+        String addToCartText = productsPage.getAddToCartText(product.getProductName());
 //        String cartAmount = productsPage.getCartAmount();
 
         assertEquals("Add to cart", addToCartText);
@@ -43,11 +45,11 @@ public class CartTests extends BaseTest {
         String itemName = new LoginPage(driver)
                 .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
-                .addToCart()
+                .addToCart(product.getProductName())
                 .navigateToCartPage()
                 .getItemName();
 
-        assertEquals("Sauce Labs Backpack", itemName);
+        assertEquals(product.getProductName(), itemName);
     }
 
     @Test
@@ -55,7 +57,7 @@ public class CartTests extends BaseTest {
         String itemQty = new LoginPage(driver)
                 .login(user.getUsername(), user.getPassword())
                 .navigateToProductsPage()
-                .addToCart()
+                .addToCart(product.getProductName())
                 .navigateToCartPage()
                 .getItemQuantity();
 

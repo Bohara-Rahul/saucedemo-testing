@@ -1,6 +1,7 @@
 package com.saucedemo.pom.pages;
 
 import com.saucedemo.pom.base.BasePage;
+import com.saucedemo.pom.objects.CheckoutInfo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,18 +32,31 @@ public class CheckoutPage extends BasePage {
         return driver.findElement(pageTitle).getText();
     }
 
-    public CheckoutPage enterFirstName() {
-        driver.findElement(firstName).sendKeys("test");
+    private CheckoutPage enterFirstName(String firstName) {
+        WebElement e = driver.findElement(this.firstName);
+        e.clear();
+        e.sendKeys(firstName);
         return this;
     }
 
-    public CheckoutPage enterLastName() {
-        driver.findElement(lastName).sendKeys("test");
+    private CheckoutPage enterLastName(String lastName) {
+        WebElement e = driver.findElement(this.lastName);
+        e.clear();
+        e.sendKeys(lastName);
         return this;
     }
 
-    public CheckoutPage enterPostalCode() {
-        driver.findElement(postalCode).sendKeys("24315");
+    private CheckoutPage enterPostalCode(String postalCode) {
+        WebElement e = driver.findElement(this.postalCode);
+        e.clear();
+        e.sendKeys(postalCode);
+        return this;
+    }
+
+    public CheckoutPage enterCheckoutInfo(CheckoutInfo checkoutInfo) {
+        enterFirstName(checkoutInfo.getFirstName())
+                .enterLastName(checkoutInfo.getLastName())
+                .enterPostalCode(checkoutInfo.getPostalCode());
         return this;
     }
 

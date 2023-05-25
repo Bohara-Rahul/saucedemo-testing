@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97e2f984-8fef-4154-a479-8b2377a6ea11" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/saucedemo/pom/objects/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/saucedemo/pom/objects/CheckoutInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/saucedemo/pom/objects/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/saucedemo/pom/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/saucedemo/pom/pages/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/saucedemo/pom/pages/CheckoutPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/saucedemo/pom/pages/CheckoutPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/saucedemo/pom/pages/ProductsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/saucedemo/pom/pages/ProductsPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/saucedemo/pom/tests/CartTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/saucedemo/pom/tests/CartTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/saucedemo/pom/tests/CheckoutTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/saucedemo/pom/tests/CheckoutTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/saucedemo/pom/tests/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/saucedemo/pom/tests/LoginTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +46,39 @@
     "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.LoginTests.verifyLockedOutUser">
-    <configuration name="CheckoutTests.verifyPaymentInformation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.LoginTests">
+    <configuration name="CartTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="saucedemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.saucedemo.pom.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.saucedemo.pom.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.saucedemo.pom.tests.CartTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CartTests.getItemQty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="saucedemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.saucedemo.pom.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.saucedemo.pom.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.saucedemo.pom.tests.CartTests" />
+      <option name="METHOD_NAME" value="getItemQty" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CheckoutTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="saucedemo" />
       <extension name="coverage">
         <pattern>
@@ -56,13 +88,12 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.saucedemo.pom.tests" />
       <option name="MAIN_CLASS_NAME" value="com.saucedemo.pom.tests.CheckoutTests" />
-      <option name="METHOD_NAME" value="verifyPaymentInformation" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CheckoutTests.verifyShippingInformation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CheckoutTests.verifyPageTitle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="saucedemo" />
       <extension name="coverage">
         <pattern>
@@ -72,29 +103,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.saucedemo.pom.tests" />
       <option name="MAIN_CLASS_NAME" value="com.saucedemo.pom.tests.CheckoutTests" />
-      <option name="METHOD_NAME" value="verifyShippingInformation" />
+      <option name="METHOD_NAME" value="verifyPageTitle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CheckoutTests.verifyTotalPrice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="saucedemo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.saucedemo.pom.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.saucedemo.pom.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.saucedemo.pom.tests.CheckoutTests" />
-      <option name="METHOD_NAME" value="verifyTotalPrice" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginTests.login" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="saucedemo" />
       <extension name="coverage">
         <pattern>
@@ -104,35 +119,18 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.saucedemo.pom.tests" />
       <option name="MAIN_CLASS_NAME" value="com.saucedemo.pom.tests.LoginTests" />
-      <option name="METHOD_NAME" value="login" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginTests.verifyLockedOutUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="saucedemo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.saucedemo.pom.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.saucedemo.pom.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.saucedemo.pom.tests.LoginTests" />
-      <option name="METHOD_NAME" value="verifyLockedOutUser" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.LoginTests.verifyLockedOutUser" />
-        <item itemvalue="JUnit.LoginTests.login" />
-        <item itemvalue="JUnit.CheckoutTests.verifyTotalPrice" />
-        <item itemvalue="JUnit.CheckoutTests.verifyShippingInformation" />
-        <item itemvalue="JUnit.CheckoutTests.verifyPaymentInformation" />
+        <item itemvalue="JUnit.LoginTests" />
+        <item itemvalue="JUnit.CheckoutTests" />
+        <item itemvalue="JUnit.CheckoutTests.verifyPageTitle" />
+        <item itemvalue="JUnit.CartTests" />
+        <item itemvalue="JUnit.CartTests.getItemQty" />
       </list>
     </recent_temporary>
   </component>

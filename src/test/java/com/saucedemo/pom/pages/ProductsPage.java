@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductsPage extends BasePage {
     private final By pageTitle = By.className("title");
-    private final By addToCartBtn = By.id("add-to-cart-sauce-labs-backpack");
+
     private final By cartLink = By.className("shopping_cart_link");
 
     public ProductsPage(WebDriver driver) {
@@ -18,20 +18,32 @@ public class ProductsPage extends BasePage {
        return driver.findElement(pageTitle).getText();
     }
 
-    public ProductsPage addToCart() {
-       driver.findElement(addToCartBtn).click();
-       return this;
+    public By getAddToCartBtnElement(String productName) {
+        return By.id("add-to-cart-" + productName.toLowerCase().replace(" ", "-"));
     }
 
-    public String getAddToCartText() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("add-to-cart-sauce-labs-backpack"))).getText();
-    }
-    public String getRemoveText() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("remove-sauce-labs-backpack"))).getText();
+    public ProductsPage addToCart(String productName) {
+        By addToCartBtn = getAddToCartBtnElement(productName);
+        driver.findElement(addToCartBtn).click();
+        return this;
     }
 
-    public ProductsPage removeFromCart() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("remove-sauce-labs-backpack"))).click();
+    public String getAddToCartText(String productName) {
+        By addToCartBtn = getAddToCartBtnElement(productName);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(addToCartBtn)).getText();
+    }
+
+    public By getRemoveBtnElement(String productName) {
+        return By.id("remove-" + productName.toLowerCase().replace(" ", "-"));
+    }
+    public String getRemoveText(String productName) {
+        By removeFromCartBtn = getRemoveBtnElement(productName);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(removeFromCartBtn)).getText();
+    }
+
+    public ProductsPage removeFromCart(String productName) {
+        By removeFromCartBtn = getRemoveBtnElement(productName);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(removeFromCartBtn)).click();
         return this;
     }
 
